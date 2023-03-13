@@ -20,5 +20,10 @@ export default defineConfig({
       'react-dom',
       'react-router-dom'
     ]
+  },
+  build: {
+    rollupOptions: {
+      input: 'src/main.tsx'
+    }
   }
 });
