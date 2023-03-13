@@ -1,25 +1,21 @@
 import { useState } from "react";
 import styles from "./DetailCarousel.module.scss";
 
-export const DetailCarousel = ({images}) => {
+export const DetailCarousel = ({ images }: any) => {
   const [currentImage, setCurrentImage] = useState(0);
 
   const handleChangeImageNext = () => {
-    setCurrentImage(
-      currentImage === images.length - 1 ? 0 : currentImage + 1
-    );
+    setCurrentImage(currentImage === images.length - 1 ? 0 : currentImage + 1);
   };
 
   const handleChangeImagePrev = () => {
-    setCurrentImage(
-      currentImage === 0 ? images.length - 1 : currentImage - 1
-    );
+    setCurrentImage(currentImage === 0 ? images.length - 1 : currentImage - 1);
   };
 
   return (
     <section className={styles["carousel-container"]}>
       <button onClick={handleChangeImagePrev}>←</button>
-      {images.map((image, index) => (
+      {images.map((image: any, index: any) => (
         <div
           key={index}
           className={`${styles["carousel-img"]} ${

@@ -6,10 +6,9 @@ import { addShoppingCart } from "../../redux/actions/shoppingCartAction";
 import { addNewProductInShoppingCart } from "../../redux/actions/shoppingCartAction";
 import { addAmountForShoppingCartUser } from "../../redux/reducer/shoppingCartReducer";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import { ADDED_TO_CART, ALREADY_IN_THE_CART } from "../../utils/constants";
 import { useAuth0 } from "@auth0/auth0-react";
-
 
 export const Card = ({
   id,
@@ -17,16 +16,19 @@ export const Card = ({
   background_image,
   //platforms,
   price,
-  }: any) => {
-    const {user}:any = useAuth0();
+}: CardProps) => {
+  const { user }: any = useAuth0();
   //const platformsSlice = platforms.slice(0, 3);
   const dispatch = useAppDispatch();
 
-
-  if(typeof user !== 'undefined'){
-    var listProductsShoppingCart: object[] = useAppSelector((state) => state.shoppingCartReducer.listProductsShoppingCartUser);
+  if (typeof user !== "undefined") {
+    var listProductsShoppingCart: object[] = useAppSelector(
+      (state) => state.shoppingCartReducer.listProductsShoppingCartUser
+    );
   } else {
-    var listProductsShoppingCart: object[] = useAppSelector((state) => state.shoppingCartReducer.listProductsShoppingCartGuest);
+    var listProductsShoppingCart: object[] = useAppSelector(
+      (state) => state.shoppingCartReducer.listProductsShoppingCartGuest
+    );
   }
 
   const [successMsg, setSuccessMsg] = useState("");
@@ -36,13 +38,12 @@ export const Card = ({
       id,
       name,
       background_image,
-      price,      
-    }
-    const item = listProductsShoppingCart.find((item: any) => item.id == parseInt(id));
-    
-    if(!item){
+      price,
+    };
+    const item = listProductsShoppingCart.find((item: any) => item.id == id);
 
-      if(typeof user !== 'undefined'){
+    if (!item) {
+      if (typeof user !== "undefined") {
         dispatch(addNewProductInShoppingCart(id, user.email));
         dispatch(addAmountForShoppingCartUser(price));
       } else {
@@ -50,20 +51,20 @@ export const Card = ({
       }
 
       setSuccessMsg(ADDED_TO_CART);
-    }else{
+    } else {
       setSuccessMsg(ALREADY_IN_THE_CART);
     }
-  }
+  };
 
   return (
     <div>
-    <div className={styles["card-container"]}>
-      <div className={styles.card}>
-    <Link to={`/${id}`}>
-        <img src={background_image} alt={name} />
-    </Link>
-        <h3>{name}</h3>
-        {/* <div className={styles["platforms-container"]}>
+      <div className={styles["card-container"]}>
+        <div className={styles.card}>
+          <Link to={`/${id}`}>
+            <img src={background_image} alt={name} />
+          </Link>
+          <h3>{name}</h3>
+          {/* <div className={styles["platforms-container"]}>
           {platforms.length > 3
             ? platformsSlice.map((platform: any, index: any) => {
                 return (
@@ -80,11 +81,13 @@ export const Card = ({
                 );
               })}
         </div> */}
-        {price === "free" ? <p>{`${price}`}</p> : <p>{`$${price}`}</p>}
+          {price === "free" ? <p>{`${price}`}</p> : <p>{`$${price}`}</p>}
+        </div>
       </div>
-    </div>
-    <button type="button" onClick={addingToShoppingCart}>Agregar al carrito</button>
-    <p>{successMsg}</p>
+      <button type="button" onClick={addingToShoppingCart}>
+        Agregar al carrito
+      </button>
+      <p>{successMsg}</p>
     </div>
   );
 };

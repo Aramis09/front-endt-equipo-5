@@ -41,7 +41,6 @@ export const Products = () => {
                   key={index}
                   name={item.name}
                   background_image={item.background_image}
-                  platforms={item.platforms}
                   price={item.price}
                 />
               {/* </Link> */}

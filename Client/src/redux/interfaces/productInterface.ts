@@ -1,7 +1,9 @@
+import {CardProps} from "../../types"
+
 export interface productReducerState{
     searchedData: Array<object>,
     details: object,
-    topProductsData: Array<object>,
+    topProductsData: CardProps[],
     carouselData: Array<object>,
     searchObject: object
     searchedName: string,

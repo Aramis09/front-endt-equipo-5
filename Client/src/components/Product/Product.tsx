@@ -1,5 +1,5 @@
 import { Card } from "../Card/Card";
-import { useAppSelector, useAppDispatch } from "../../redux/hooks/hooks";
+import { useAppSelector } from "../../redux/hooks/hooks";
 import styles from "./Product.module.scss";
 //import { Link } from "react-router-dom";
 //import { useEffect } from "react";
@@ -22,6 +22,7 @@ export const Product = () => {
     >
       {" "}
       {topProductsData.map((product, index) => {
+        
         return (
           <div key={index} className={styles.card}>
             {/* <Link to={`/${product.id}`}> */}
@@ -30,7 +31,6 @@ export const Product = () => {
                 id={product.id}
                 name={product.name}
                 background_image={product.background_image}
-                platforms={product.platforms}
                 price={product.price}
               />
             {/* </Link> */}

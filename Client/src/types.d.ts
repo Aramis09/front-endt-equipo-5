@@ -1,5 +1,5 @@
 export interface Game {
-  id: string | number;
+  id: number;
   name: string;
   background_image: string;
   rating: number;
@@ -13,10 +13,9 @@ export interface Game {
 }
 
 export interface CardProps {
-  id: string | number;
+  id: number;
   name: string;
   background_image: string;
-  platforms: string[];
   price: string | number;
 }
 
