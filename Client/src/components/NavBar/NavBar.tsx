@@ -24,7 +24,7 @@ export const NavBar = () => {
   useEffect(() => {
     const addNewUser = async () => {
       if(typeof user !== 'undefined'){
-        await axios.get(`http://localhost:3001/user/userNew?email=${user.email}`);
+        await axios.get(`https://back-end-equipo-5-production.up.railway.app/user/userNew?email=${user.email}`);
       }
     }
     addNewUser()
