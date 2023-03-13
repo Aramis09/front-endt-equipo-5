@@ -1,0 +1,54 @@
+@import '../../styles/global-vars.scss';
+
+.card h3 {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.card p {
+  color: $neon-color;
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.platforms-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.platforms {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1vh;
+  text-decoration: none;
+}
+
+.form-button {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  width: 300px;
+  background-color: rgb(22, 22, 22);
+}
+
+.form-button:hover {
+  box-shadow: 0 0 15px 2px $shadow-blue-color;
+  border: none;
+}
+
+.form-button:focus {
+  background-color: $shadow-blue-color;
+}
