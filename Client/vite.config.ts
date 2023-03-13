@@ -1,10 +1,17 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import sass from 'vite-plugin-sass';
+import cssModules from 'vite-plugin-css-modules';
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
-  server: { 
+  plugins: [
+    react(),
+    sass(),
+    cssModules({
+      generateScopedName: '[local]__[hash:base64:5]'
+    })
+  ],
+  server: {
     port: 3000
   },
   optimizeDeps: {
@@ -13,5 +20,5 @@ export default defineConfig({
       'react-dom',
       'react-router-dom'
     ]
-  },
-})
+  }
+});
